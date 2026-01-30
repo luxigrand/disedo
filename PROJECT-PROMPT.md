@@ -1,0 +1,1 @@
+şimdi ben şoyle bir site istiyorum  discord gibi, her 3 saniyede bir say fayı otamatık yenilesin (realtime gibi ) ,ve detaylı olsun discordda olan temel ozelliklerin hepsi olsun 

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import { useQueryState } from 'nuqs'
 import ServerSidebar from '@/components/ServerSidebar'
 import ChannelsSidebar from '@/components/ChannelsSidebar'
 import ChatArea from '@/components/ChatArea'
@@ -10,10 +11,19 @@ import MembersList from '@/components/MembersList'
 import StatusBar from '@/components/StatusBar'
 
 export default function AppPage() {
-  const [selectedServer, setSelectedServer] = useState<string | null>(null)
-  const [selectedChannel, setSelectedChannel] = useState<string | null>(null)
+  const [selectedServer, setSelectedServerState] = useQueryState('server')
+  const [selectedChannel, setSelectedChannelState] = useQueryState('channel')
   const [user, setUser] = useState<any>(null)
   const router = useRouter()
+
+  // Wrapper functions to match component signatures
+  const setSelectedServer = (serverId: string) => {
+    setSelectedServerState(serverId)
+  }
+
+  const setSelectedChannel = (channelId: string) => {
+    setSelectedChannelState(channelId)
+  }
 
   useEffect(() => {
     console.log('🔵 [APP] Component mount oldu, user kontrolü başlatılıyor...')

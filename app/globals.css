@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #36393f;
+  --foreground: #dcddde;
+  --discord-dark: #2f3136;
+  --discord-darker: #202225;
+  --discord-sidebar: #2f3136;
+  --discord-chat: #36393f;
+  --discord-hover: #3c3f44;
+  --discord-purple: #5865f2;
+  --discord-purple-hover: #4752c4;
+  --discord-text-muted: #72767d;
+  --discord-online: #43b581;
+  --discord-offline: #747f8d;
 }
 
 @theme inline {
@@ -12,15 +22,34 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
+  background: var(--discord-darker);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--discord-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--discord-hover);
 }

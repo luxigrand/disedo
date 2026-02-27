@@ -14,6 +14,14 @@ export default function ProfileLinkShare({ profileLink, username }: ProfileLinkS
 
   const fullUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/profile/${profileLink}`
 
+  // #region agent log
+  if (typeof window !== 'undefined') {
+    const nav = navigator as any;
+    const hasShare = 'share' in navigator;
+    fetch('http://127.0.0.1:7244/ingest/e4b184f0-875c-4890-a7a5-15aa59879e2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'ProfileLinkShare.tsx:18',message:'Navigator share API check',data:{hasNavigator:typeof navigator !== 'undefined',hasShare:hasShare,shareType:typeof nav.share,shareValue:nav.share ? 'defined' : 'undefined'},timestamp:Date.now(),runId:'initial',hypothesisId:'A'})}).catch(()=>{});
+  }
+  // #endregion
+
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(fullUrl)
@@ -87,7 +95,7 @@ export default function ProfileLinkShare({ profileLink, username }: ProfileLinkS
             </button>
           </div>
 
-          {navigator.share && (
+          {typeof window !== 'undefined' && 'share' in navigator && (
             <button
               onClick={shareProfile}
               className="w-full px-4 py-2 bg-[#5865f2] hover:bg-[#4752c4] text-white rounded transition-colors flex items-center justify-center gap-2"

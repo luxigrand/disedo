@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { supabase } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { useQueryState } from 'nuqs'
@@ -10,7 +10,7 @@ import ChatArea from '@/components/ChatArea'
 import MembersList from '@/components/MembersList'
 import StatusBar from '@/components/StatusBar'
 
-export default function AppPage() {
+function AppPageContent() {
   const [selectedServer, setSelectedServerState] = useQueryState('server')
   const [selectedChannel, setSelectedChannelState] = useQueryState('channel')
   const [user, setUser] = useState<any>(null)
@@ -142,5 +142,21 @@ export default function AppPage() {
       {/* Status Bar */}
       <StatusBar serverId={selectedServer} channelId={selectedChannel} />
     </div>
+  )
+}
+
+export default function AppPage() {
+  // #region agent log
+  fetch('http://127.0.0.1:7244/ingest/e4b184f0-875c-4890-a7a5-15aa59879e2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/app/page.tsx:148',message:'AppPage wrapper rendered',data:{hasSuspense:true},timestamp:Date.now(),runId:'initial',hypothesisId:'A'})}).catch(()=>{});
+  // #endregion
+
+  return (
+    <Suspense fallback={
+      <div className="flex h-screen items-center justify-center bg-[#202225]">
+        <div className="text-white">Yükleniyor...</div>
+      </div>
+    }>
+      <AppPageContent />
+    </Suspense>
   )
 }

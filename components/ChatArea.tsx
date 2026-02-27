@@ -17,7 +17,7 @@ interface Message {
   content: string
   created_at: string
   updated_at: string
-  edited_at?: string | null
+  edited_at: string | null
   user_id: string
   user_profile?: {
     username: string

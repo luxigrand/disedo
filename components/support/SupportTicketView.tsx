@@ -8,6 +8,7 @@ import { Send, Edit2, CheckCircle, XCircle } from 'lucide-react'
 
 interface Ticket {
   id: string
+  user_id: string
   title: string
   description: string
   status: string
@@ -15,6 +16,11 @@ interface Ticket {
   created_at: string
   updated_at: string
   assigned_to: string | null
+  user_profile?: {
+    username: string
+    display_name: string | null
+    avatar_url: string | null
+  }
 }
 
 interface TicketMessage {
@@ -77,7 +83,34 @@ export default function SupportTicketView({ ticketId, isStaff }: { ticketId: str
         .single()
 
       if (error) throw error
-      setTicket(data)
+
+      // #region agent log
+      fetch('http://127.0.0.1:7244/ingest/e4b184f0-875c-4890-a7a5-15aa59879e2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'SupportTicketView.tsx:80',message:'Ticket data loaded',data:{hasUserId:!!data?.user_id,userIdType:typeof data?.user_id,allKeys:data ? Object.keys(data) : []},timestamp:Date.now(),runId:'initial',hypothesisId:'A'})}).catch(()=>{});
+      // #endregion
+
+      // Load user profile for ticket creator
+      if (data?.user_id) {
+        const { data: profile } = await supabase
+          .from('user_profiles')
+          .select('username, display_name, avatar_url')
+          .eq('user_id', data.user_id)
+          .single()
+
+        // #region agent log
+        fetch('http://127.0.0.1:7244/ingest/e4b184f0-875c-4890-a7a5-15aa59879e2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'SupportTicketView.tsx:95',message:'User profile loaded for ticket',data:{hasProfile:!!profile,username:profile?.username,displayName:profile?.display_name},timestamp:Date.now(),runId:'initial',hypothesisId:'B'})}).catch(()=>{});
+        // #endregion
+
+        setTicket({
+          ...data,
+          user_profile: profile || {
+            username: 'Bilinmeyen',
+            display_name: null,
+            avatar_url: null,
+          },
+        })
+      } else {
+        setTicket(data)
+      }
     } catch (error) {
       console.error('Error loading ticket:', error)
     } finally {
@@ -251,11 +284,21 @@ export default function SupportTicketView({ ticketId, isStaff }: { ticketId: str
         {/* Initial Description */}
         <div className="bg-[#2f3136] rounded-lg p-4">
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 rounded-full bg-[#5865f2] flex items-center justify-center text-white text-xs font-semibold">
-              {ticket.user_id.charAt(0).toUpperCase()}
-            </div>
+            {ticket.user_profile?.avatar_url ? (
+              <img
+                src={ticket.user_profile.avatar_url}
+                alt={ticket.user_profile.display_name || ticket.user_profile.username}
+                className="w-8 h-8 rounded-full"
+              />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-[#5865f2] flex items-center justify-center text-white text-xs font-semibold">
+                {(ticket.user_profile?.display_name || ticket.user_profile?.username || '?').charAt(0).toUpperCase()}
+              </div>
+            )}
             <div>
-              <div className="text-sm font-semibold text-white">Ticket Oluşturucu</div>
+              <div className="text-sm font-semibold text-white">
+                {ticket.user_profile?.display_name || ticket.user_profile?.username || 'Bilinmeyen'}
+              </div>
               <div className="text-xs text-[#72767d]">
                 {format(new Date(ticket.created_at), 'dd MMMM yyyy HH:mm', { locale: tr })}
               </div>

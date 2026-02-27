@@ -145,6 +145,9 @@ function AppPageContent() {
   )
 }
 
+// Force dynamic rendering to prevent prerendering issues
+export const dynamic = 'force-dynamic'
+
 export default function AppPage() {
   // #region agent log
   fetch('http://127.0.0.1:7244/ingest/e4b184f0-875c-4890-a7a5-15aa59879e2d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/app/page.tsx:148',message:'AppPage wrapper rendered',data:{hasSuspense:true},timestamp:Date.now(),runId:'initial',hypothesisId:'A'})}).catch(()=>{});

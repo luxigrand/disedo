@@ -20,8 +20,10 @@ export default function SupportChatPopup({ isOpen, onClose }: SupportChatPopupPr
   const [inputMessage, setInputMessage] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [streamingMessageId, setStreamingMessageId] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  const abortControllerRef = useRef<AbortController | null>(null)
 
   // Reset messages when popup opens/closes
   useEffect(() => {
@@ -51,8 +53,33 @@ export default function SupportChatPopup({ isOpen, onClose }: SupportChatPopupPr
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
+  // Polling mechanism - refresh messages every 3 seconds
+  useEffect(() => {
+    if (!isOpen) return
+
+    const pollInterval = setInterval(() => {
+      // Auto-scroll to bottom to ensure latest messages are visible
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+      
+      // This polling mechanism can be extended in the future to:
+      // - Check for new messages from support staff
+      // - Update message status
+      // - Sync with other devices
+      // For now, it ensures the UI stays responsive and messages are visible
+    }, 3000)
+
+    return () => {
+      clearInterval(pollInterval)
+    }
+  }, [isOpen, messages])
+
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || loading) return
+
+    // Cancel any existing streaming request
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort()
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -67,6 +94,22 @@ export default function SupportChatPopup({ isOpen, onClose }: SupportChatPopupPr
     setLoading(true)
     setError(null)
 
+    // Create assistant message placeholder for streaming
+    const assistantMessageId = (Date.now() + 1).toString()
+    const assistantMessage: Message = {
+      id: assistantMessageId,
+      role: 'assistant',
+      content: '',
+      timestamp: new Date(),
+    }
+
+    setMessages((prev) => [...prev, assistantMessage])
+    setStreamingMessageId(assistantMessageId)
+
+    // Create new AbortController for this request
+    const abortController = new AbortController()
+    abortControllerRef.current = abortController
+
     try {
       // Prepare conversation history for context
       const conversationHistory = messages.map((msg) => ({
@@ -74,7 +117,7 @@ export default function SupportChatPopup({ isOpen, onClose }: SupportChatPopupPr
         content: msg.content,
       }))
 
-      // Call API
+      // Call API with streaming enabled
       const response = await fetch('/api/support/chat', {
         method: 'POST',
         headers: {
@@ -83,44 +126,96 @@ export default function SupportChatPopup({ isOpen, onClose }: SupportChatPopupPr
         body: JSON.stringify({
           message: userMessage.content,
           conversationHistory,
+          stream: true, // Enable streaming
         }),
+        signal: abortController.signal,
       })
 
-      const data = await response.json()
-
       if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Bir hata oluştu.' }))
+        
         // Handle rate limiting
         if (response.status === 429) {
-          const resetAt = data.resetAt ? new Date(data.resetAt) : null
+          const resetAt = errorData.resetAt ? new Date(errorData.resetAt) : null
           const waitTime = resetAt
             ? Math.ceil((resetAt.getTime() - Date.now()) / 1000)
             : 60
 
           throw new Error(
-            data.error || `Çok fazla istek gönderdiniz. Lütfen ${waitTime} saniye sonra tekrar deneyin.`
+            errorData.error || `Çok fazla istek gönderdiniz. Lütfen ${waitTime} saniye sonra tekrar deneyin.`
           )
         }
 
-        throw new Error(data.error || 'Bir hata oluştu. Lütfen tekrar deneyin.')
+        throw new Error(errorData.error || 'Bir hata oluştu. Lütfen tekrar deneyin.')
       }
 
-      // Add assistant response
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: data.message,
-        timestamp: new Date(),
+      // Handle streaming response
+      const reader = response.body?.getReader()
+      const decoder = new TextDecoder()
+
+      if (!reader) {
+        throw new Error('Stream okunamadı.')
       }
 
-      setMessages((prev) => [...prev, assistantMessage])
+      let accumulatedText = ''
+
+      while (true) {
+        const { done, value } = await reader.read()
+
+        if (done) {
+          break
+        }
+
+        // Decode the chunk
+        const chunk = decoder.decode(value, { stream: true })
+        const lines = chunk.split('\n').filter((line) => line.trim())
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            try {
+              const data = JSON.parse(line.slice(6))
+              
+              if (data.text) {
+                accumulatedText += data.text
+                
+                // Update the assistant message with accumulated text
+                setMessages((prev) =>
+                  prev.map((msg) =>
+                    msg.id === assistantMessageId
+                      ? { ...msg, content: accumulatedText }
+                      : msg
+                  )
+                )
+              }
+
+              if (data.done) {
+                setStreamingMessageId(null)
+                setLoading(false)
+              }
+            } catch (e) {
+              // Ignore JSON parse errors for incomplete chunks
+            }
+          }
+        }
+      }
+
+      setStreamingMessageId(null)
+      setLoading(false)
     } catch (err: any) {
+      // Don't show error if request was aborted
+      if (err.name === 'AbortError') {
+        return
+      }
+
       console.error('Error sending message:', err)
       setError(err.message || 'Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.')
 
-      // Remove the user message if there was an error (optional - you might want to keep it)
-      // setMessages((prev) => prev.slice(0, -1))
-    } finally {
+      // Remove the assistant message if there was an error
+      setMessages((prev) => prev.filter((msg) => msg.id !== assistantMessageId))
+      setStreamingMessageId(null)
       setLoading(false)
+    } finally {
+      abortControllerRef.current = null
       // Refocus input after sending
       setTimeout(() => inputRef.current?.focus(), 100)
     }
@@ -185,11 +280,23 @@ export default function SupportChatPopup({ isOpen, onClose }: SupportChatPopupPr
             </div>
           ))}
 
-          {/* Loading Indicator */}
-          {loading && (
+          {/* Loading Indicator - only show if not streaming */}
+          {loading && !streamingMessageId && (
             <div className="flex justify-start">
               <div className="bg-[#2f3136] text-[#dcddde] rounded-lg px-4 py-2">
                 <Loader2 className="w-5 h-5 animate-spin" />
+              </div>
+            </div>
+          )}
+
+          {/* Streaming Indicator */}
+          {streamingMessageId && (
+            <div className="flex justify-start">
+              <div className="bg-[#2f3136] text-[#dcddde] rounded-lg px-4 py-2">
+                <div className="flex items-center gap-2">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span className="text-xs opacity-70">Yazıyor...</span>
+                </div>
               </div>
             </div>
           )}

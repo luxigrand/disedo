@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { checkRateLimit, getClientIP } from '@/lib/rate-limit'
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY
-// Free tier için gemini-1.5-flash kullanıyoruz (daha hızlı ve ücretsiz)
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent'
+// Free tier için gemini-3-flash-preview kullanıyoruz
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview'
+const GEMINI_STREAM_URL = `${GEMINI_API_URL}:streamGenerateContent`
 
 /**
  * System prompt for the AI support assistant
@@ -58,7 +59,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { message, conversationHistory = [] } = body
+    const { message, conversationHistory = [], stream = false } = body
 
     // Validate message
     if (!message || typeof message !== 'string') {
@@ -110,9 +111,121 @@ export async function POST(request: NextRequest) {
       },
     }
 
-    // Call Gemini API
+    // If streaming is requested, return streaming response
+    if (stream) {
+      try {
+        const geminiResponse = await fetch(
+          `${GEMINI_STREAM_URL}?key=${GEMINI_API_KEY}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(geminiRequest),
+          }
+        )
+
+        if (!geminiResponse.ok) {
+          const errorData = await geminiResponse.text()
+          console.error('Gemini API error:', errorData)
+          
+          if (geminiResponse.status === 429) {
+            return NextResponse.json(
+              { error: 'AI servisi şu anda yoğun. Lütfen birkaç saniye sonra tekrar deneyin.' },
+              { status: 503 }
+            )
+          }
+
+          if (geminiResponse.status === 401) {
+            return NextResponse.json(
+              { error: 'API yapılandırması hatalı.' },
+              { status: 500 }
+            )
+          }
+
+          return NextResponse.json(
+            { error: 'AI yanıtı alınamadı. Lütfen daha sonra tekrar deneyin.' },
+            { status: 500 }
+          )
+        }
+
+        // Create a ReadableStream to forward Gemini's streaming response
+        const stream = new ReadableStream({
+          async start(controller) {
+            const reader = geminiResponse.body?.getReader()
+            const decoder = new TextDecoder()
+
+            if (!reader) {
+              controller.close()
+              return
+            }
+
+            try {
+              while (true) {
+                const { done, value } = await reader.read()
+                
+                if (done) {
+                  controller.close()
+                  break
+                }
+
+                // Decode the chunk
+                const chunk = decoder.decode(value, { stream: true })
+                const lines = chunk.split('\n').filter(line => line.trim())
+
+                for (const line of lines) {
+                  if (line.startsWith('data: ')) {
+                    try {
+                      const data = JSON.parse(line.slice(6))
+                      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || ''
+                      
+                      if (text) {
+                        // Send the text chunk to the client
+                        controller.enqueue(
+                          new TextEncoder().encode(`data: ${JSON.stringify({ text, done: false })}\n\n`)
+                        )
+                      }
+
+                      // Check if this is the final chunk
+                      if (data.candidates?.[0]?.finishReason) {
+                        controller.enqueue(
+                          new TextEncoder().encode(`data: ${JSON.stringify({ text: '', done: true })}\n\n`)
+                        )
+                      }
+                    } catch (e) {
+                      // Ignore JSON parse errors for incomplete chunks
+                    }
+                  }
+                }
+              }
+            } catch (error) {
+              console.error('Streaming error:', error)
+              controller.error(error)
+            }
+          },
+        })
+
+        return new Response(stream, {
+          headers: {
+            'Content-Type': 'text/event-stream',
+            'Cache-Control': 'no-cache',
+            'Connection': 'keep-alive',
+            'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+            'X-RateLimit-Reset': rateLimitResult.resetAt.toString(),
+          },
+        })
+      } catch (error) {
+        console.error('Streaming setup error:', error)
+        return NextResponse.json(
+          { error: 'Streaming başlatılamadı. Lütfen daha sonra tekrar deneyin.' },
+          { status: 500 }
+        )
+      }
+    }
+
+    // Non-streaming response (fallback)
     const geminiResponse = await fetch(
-      `${GEMINI_API_URL}?key=${GEMINI_API_KEY}`,
+      `${GEMINI_API_URL}:generateContent?key=${GEMINI_API_KEY}`,
       {
         method: 'POST',
         headers: {

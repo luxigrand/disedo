@@ -11,7 +11,7 @@ const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/
 const SYSTEM_PROMPT = `Sen Disedo uygulamasının müşteri destek asistanısın. 
 Türkçe konuşuyorsun ve kullanıcılara yardımcı oluyorsun.
 Kısa, net ve yardımcı yanıtlar ver. 
-Eğer bir sorunun çözümünü bilmiyorsan, kullanıcıyı destek ekibine yönlendir.
+Eğer bir sorunun çözümünü bilmiyorsan, kullanıcıyı destek ekibine yönlendir. destek ekibi olarak 'kuzeyyilmaz@gmail.com' emailine yonlendir
 Kibar ve profesyonel bir dil kullan.`
 
 export async function POST(request: NextRequest) {

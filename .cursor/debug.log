@@ -1,26 +1,151 @@
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772201428195,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772201866729,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772201866924,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772201866924,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772202113654,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772202113654,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772202409421,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772202423977,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772202440095,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772202446242,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772202448191,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203764615,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203764758,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203764759,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203813283,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203813599,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203813600,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203817221,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203817333,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772203817333,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772204027285,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772204027626,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772204027628,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772204154869,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772204155200,"runId":"initial","hypothesisId":"A"}
-{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772204155201,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772345888576,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772345888745,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772345888746,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772346142675,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772346142909,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772346142910,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772346531961,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772346532106,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772346532106,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772347071270,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772347071271,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772347071270,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772347071271,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772347071338,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772347071338,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772348567564,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772348567848,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772348567849,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":true},"timestamp":1772348697593,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":true},"timestamp":1772348697594,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772348996993,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772348997224,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772348997224,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772348997974,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772348997974,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":0,"loading":true,"hasError":false},"timestamp":1772348998603,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":0,"loading":true,"hasError":false},"timestamp":1772348998604,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":true},"timestamp":1772348998608,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:49","message":"loadAllServers called","data":{"isOpen":true},"timestamp":1772348998609,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:59","message":"Initial query result","data":{"hasError":false,"hasData":true,"dataLength":4},"timestamp":1772348998705,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:130","message":"Successfully loaded servers with owners","data":{"serversCount":4},"timestamp":1772348999056,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":false},"timestamp":1772348999057,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":false},"timestamp":1772348999061,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349003907,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":false},"timestamp":1772349006619,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":false},"timestamp":1772349006622,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":true},"timestamp":1772349006634,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:49","message":"loadAllServers called","data":{"isOpen":true},"timestamp":1772349006634,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":true,"hasError":false},"timestamp":1772349006647,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":true,"hasError":false},"timestamp":1772349006648,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:59","message":"Initial query result","data":{"hasError":false,"hasData":true,"dataLength":4},"timestamp":1772349006742,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:130","message":"Successfully loaded servers with owners","data":{"serversCount":4},"timestamp":1772349007491,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":false},"timestamp":1772349007492,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":false},"timestamp":1772349007496,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349008845,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127026,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127069,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127324,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127325,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127435,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127436,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127610,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127846,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349127847,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349130067,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349130067,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349130092,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349130093,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349130396,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349130397,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349133611,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349133680,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349133863,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349134269,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349134270,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349134326,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349134327,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349134423,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349134424,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349136280,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349136281,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349136855,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349136855,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349137674,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349137674,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349215707,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349215894,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349215894,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349217536,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349217538,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349313559,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349313566,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349313570,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349315913,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349315916,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349315907,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349315911,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349315908,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349315912,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316245,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316373,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316451,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316729,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316730,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316808,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316809,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316872,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316896,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316897,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349316993,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349317001,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349319719,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349319787,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349319902,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349320233,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349320234,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349320289,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349320290,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349320387,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349320387,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349321164,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349321165,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349321333,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349321335,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349321340,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349321341,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330031,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330121,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330204,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330501,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330502,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330592,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330593,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330629,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349330630,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349331446,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349331447,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349331463,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349331465,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349331625,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349331626,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349418856,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349419036,"runId":"initial","hypothesisId":"A"}
+{"location":"app/app/page.tsx:148","message":"AppPage wrapper rendered","data":{"hasSuspense":true},"timestamp":1772349419036,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349420102,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349420103,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349667734,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349667735,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349668255,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349668256,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349668432,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772349668432,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":0,"loading":true,"hasError":false},"timestamp":1772350594399,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":0,"loading":true,"hasError":false},"timestamp":1772350594401,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":true},"timestamp":1772350594404,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:49","message":"loadAllServers called","data":{"isOpen":true},"timestamp":1772350594406,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:59","message":"Initial query result","data":{"hasError":false,"hasData":true,"dataLength":4},"timestamp":1772350594541,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:130","message":"Successfully loaded servers with owners","data":{"serversCount":4},"timestamp":1772350595325,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":false},"timestamp":1772350595326,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:154","message":"Modal rendering","data":{"isOpen":true,"serversCount":4,"loading":false,"hasError":false},"timestamp":1772350595329,"runId":"initial","hypothesisId":"A"}
+{"location":"components/servers/AllServersModal.tsx:43","message":"useEffect triggered","data":{"isOpen":false},"timestamp":1772350598200,"runId":"initial","hypothesisId":"A"}

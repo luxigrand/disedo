@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase/client'
-import { Hash, Volume2, ChevronDown, Plus } from 'lucide-react'
+import { Hash, Volume2, ChevronDown, Plus, Settings } from 'lucide-react'
 import UserControlPanel from './UserControlPanel'
 import ServerSubgroups from '@/components/groups/ServerSubgroups'
+import ServerSettingsModal from './servers/ServerSettingsModal'
 
 interface Category {
   id: string
@@ -34,6 +35,7 @@ export default function ChannelsSidebar({
   const [serverName, setServerName] = useState('')
   const [user, setUser] = useState<any>(null)
   const [showSubgroups, setShowSubgroups] = useState(false)
+  const [showSettingsModal, setShowSettingsModal] = useState(false)
 
   useEffect(() => {
     loadData()
@@ -154,13 +156,22 @@ export default function ChannelsSidebar({
   const uncategorizedChannels = getChannelsByCategory(null)
 
   return (
-    <div className="w-60 bg-[#2f3136] flex flex-col h-full">
+    <div className="w-full bg-[#2f3136] flex flex-col h-full">
       {/* Server header */}
       <div className="h-12 px-4 flex items-center justify-between shadow-md border-b border-[#202225]">
         <h2 className="text-white font-semibold text-sm truncate">{serverName}</h2>
-        <button className="text-[#b9bbbe] hover:text-white">
-          <ChevronDown className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setShowSettingsModal(true)}
+            className="text-[#b9bbbe] hover:text-white transition-colors"
+            title="Sunucu Ayarları"
+          >
+            <Settings className="w-5 h-5" />
+          </button>
+          <button className="text-[#b9bbbe] hover:text-white">
+            <ChevronDown className="w-5 h-5" />
+          </button>
+        </div>
       </div>
 
       {/* Channels list */}
@@ -267,6 +278,13 @@ export default function ChannelsSidebar({
 
       {/* User control panel */}
       {user && <UserControlPanel user={user} />}
+
+      {/* Server Settings Modal */}
+      <ServerSettingsModal
+        isOpen={showSettingsModal}
+        onClose={() => setShowSettingsModal(false)}
+        serverId={serverId}
+      />
     </div>
   )
 }

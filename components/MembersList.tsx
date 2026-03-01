@@ -127,7 +127,7 @@ export default function MembersList({ serverId }: { serverId: string }) {
 
   if (loading) {
     return (
-      <div className="w-60 bg-[#2f3136] p-4">
+      <div className="w-full bg-[#2f3136] p-4">
         <div className="text-[#72767d] text-sm">Yükleniyor...</div>
       </div>
     )
@@ -144,7 +144,7 @@ export default function MembersList({ serverId }: { serverId: string }) {
   }, {} as Record<string, Member[]>)
 
   return (
-    <div className="w-60 bg-[#2f3136] flex flex-col h-full">
+    <div className="w-full bg-[#2f3136] flex flex-col h-full">
       <div className="px-4 py-3 border-b border-[#202225]">
         <h3 className="text-xs font-semibold text-[#8e9297] uppercase">
           Üyeler — {members.length}

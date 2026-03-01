@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase/client'
 import { Plus, Hash } from 'lucide-react'
+import AllServersModal from './servers/AllServersModal'
 
 interface Server {
   id: string
@@ -19,6 +20,7 @@ export default function ServerSidebar({
 }) {
   const [servers, setServers] = useState<Server[]>([])
   const [loading, setLoading] = useState(true)
+  const [showAllServersModal, setShowAllServersModal] = useState(false)
 
   useEffect(() => {
     loadServers()
@@ -89,6 +91,10 @@ export default function ServerSidebar({
     const name = prompt('Sunucu adı:')
     if (!name) return
 
+    const password = prompt('Sunucu şifresi (boş bırakabilirsiniz):')
+    // password null ise boş string, undefined ise null olarak kaydet
+    const serverPassword = password === '' ? null : password || null
+
     try {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) return
@@ -98,6 +104,7 @@ export default function ServerSidebar({
         .insert({
           name,
           owner_id: user.id,
+          password: serverPassword,
         })
         .select()
         .single()
@@ -135,18 +142,19 @@ export default function ServerSidebar({
 
   if (loading) {
     return (
-      <div className="w-16 bg-[#202225] flex flex-col items-center py-3">
+      <div className="w-full bg-[#202225] flex flex-col items-center py-3">
         <div className="w-12 h-12 rounded-full bg-[#36393f] animate-pulse"></div>
       </div>
     )
   }
 
   return (
-    <div className="w-16 bg-[#202225] flex flex-col items-center py-3 gap-2 overflow-y-auto">
-      {/* Home/DMs button */}
+    <div className="w-full bg-[#202225] flex flex-col items-center py-3 gap-2 overflow-y-auto">
+      {/* Home/DMs button - Tüm Sunucular */}
       <button
+        onClick={() => setShowAllServersModal(true)}
         className="w-12 h-12 rounded-full bg-[#5865f2] hover:rounded-2xl transition-all duration-200 flex items-center justify-center text-white font-semibold hover:bg-[#4752c4]"
-        title="Ana Sayfa"
+        title="Tüm Sunucular"
       >
         <Hash className="w-6 h-6" />
       </button>
@@ -187,6 +195,13 @@ export default function ServerSidebar({
       >
         <Plus className="w-6 h-6" />
       </button>
+
+      {/* All Servers Modal */}
+      <AllServersModal
+        isOpen={showAllServersModal}
+        onClose={() => setShowAllServersModal(false)}
+        onSelectServer={onSelectServer}
+      />
     </div>
   )
 }

@@ -161,40 +161,69 @@ export async function POST(request: NextRequest) {
             }
 
             try {
+              let buffer = ''
+              
               while (true) {
                 const { done, value } = await reader.read()
                 
                 if (done) {
+                  // Process any remaining buffer
+                  if (buffer.trim()) {
+                    try {
+                      const data = JSON.parse(buffer.trim())
+                      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || ''
+                      if (text) {
+                        controller.enqueue(
+                          new TextEncoder().encode(`data: ${JSON.stringify({ text, done: true })}\n\n`)
+                        )
+                      }
+                    } catch (e) {
+                      // Ignore parse errors
+                    }
+                  }
                   controller.close()
                   break
                 }
 
-                // Decode the chunk
-                const chunk = decoder.decode(value, { stream: true })
-                const lines = chunk.split('\n').filter(line => line.trim())
+                // Decode the chunk and add to buffer
+                buffer += decoder.decode(value, { stream: true })
+                
+                // Process complete JSON objects from buffer
+                const lines = buffer.split('\n')
+                buffer = lines.pop() || '' // Keep incomplete line in buffer
 
                 for (const line of lines) {
-                  if (line.startsWith('data: ')) {
-                    try {
-                      const data = JSON.parse(line.slice(6))
-                      const text = data.candidates?.[0]?.content?.parts?.[0]?.text || ''
-                      
-                      if (text) {
-                        // Send the text chunk to the client
-                        controller.enqueue(
-                          new TextEncoder().encode(`data: ${JSON.stringify({ text, done: false })}\n\n`)
-                        )
-                      }
+                  const trimmedLine = line.trim()
+                  if (!trimmedLine) continue
 
+                  try {
+                    const data = JSON.parse(trimmedLine)
+                    
+                    // Extract text from Gemini response
+                    const candidates = data.candidates || []
+                    if (candidates.length > 0) {
+                      const content = candidates[0].content
+                      if (content && content.parts) {
+                        for (const part of content.parts) {
+                          if (part.text) {
+                            // Send the text chunk
+                            controller.enqueue(
+                              new TextEncoder().encode(`data: ${JSON.stringify({ text: part.text, done: false })}\n\n`)
+                            )
+                          }
+                        }
+                      }
+                      
                       // Check if this is the final chunk
-                      if (data.candidates?.[0]?.finishReason) {
+                      if (candidates[0].finishReason) {
                         controller.enqueue(
                           new TextEncoder().encode(`data: ${JSON.stringify({ text: '', done: true })}\n\n`)
                         )
                       }
-                    } catch (e) {
-                      // Ignore JSON parse errors for incomplete chunks
                     }
+                  } catch (e) {
+                    // Ignore JSON parse errors for incomplete chunks
+                    // These will be processed when more data arrives
                   }
                 }
               }

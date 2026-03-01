@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import { Mail, Lock, Loader2 } from 'lucide-react'
+import { Mail, Lock, Loader2, X } from 'lucide-react'
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true)
@@ -11,7 +11,93 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [clickCount, setClickCount] = useState(0)
+  const [showAdminModal, setShowAdminModal] = useState(false)
+  const [adminPassword, setAdminPassword] = useState('')
+  const [adminLoading, setAdminLoading] = useState(false)
   const router = useRouter()
+
+  // Handle footer click to open admin modal
+  const handleFooterClick = () => {
+    const newCount = clickCount + 1
+    setClickCount(newCount)
+    
+    // Reset counter after 3 seconds if not reached 8
+    setTimeout(() => {
+      if (newCount < 8) {
+        setClickCount(0)
+      }
+    }, 3000)
+
+    if (newCount >= 8) {
+      setClickCount(0)
+      setShowAdminModal(true)
+      setAdminPassword('')
+      setError(null)
+    }
+  }
+
+  // Handle admin password submission (shortcut login)
+  const handleAdminLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (adminPassword !== '132412') {
+      setError('Yanlış şifre!')
+      setAdminPassword('')
+      return
+    }
+
+    setAdminLoading(true)
+    setError(null)
+
+    try {
+      // Arka planda admin@admin.com / 150412 ile giriş yap
+      const realAdminEmail = 'admin@admin.com'
+      const realAdminPassword = '150412'
+
+      // Önce giriş yapmayı dene
+      let { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email: realAdminEmail,
+        password: realAdminPassword,
+      })
+
+      // Eğer kullanıcı yoksa, oluştur
+      if (signInError && (signInError.message.includes('Invalid login') || signInError.message.includes('Invalid credentials'))) {
+        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
+          email: realAdminEmail,
+          password: realAdminPassword,
+        })
+
+        if (signUpError) throw signUpError
+
+        // Kayıt sonrası otomatik giriş
+        const { data: signInData, error: signInError2 } = await supabase.auth.signInWithPassword({
+          email: realAdminEmail,
+          password: realAdminPassword,
+        })
+
+        if (signInError2) throw signInError2
+        data = signInData
+      } else if (signInError) {
+        throw signInError
+      }
+
+      if (data.user) {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (session) {
+          setShowAdminModal(false)
+          setAdminPassword('')
+          window.location.href = '/app'
+        } else {
+          throw new Error('Session oluşturulamadı.')
+        }
+      }
+    } catch (err: any) {
+      console.error('Admin login error:', err)
+      setError(err.message || 'Giriş başarısız.')
+      setAdminLoading(false)
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -174,10 +260,78 @@ export default function LoginPage() {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-[#72767d] text-sm mt-6">
-          Disedo © 2024
+        <p 
+          className="text-center text-[#72767d] text-sm mt-6 cursor-pointer hover:text-[#b9bbbe] transition-colors"
+          onClick={handleFooterClick}
+          title=""
+        >
+          Disedo © 2024-2026
         </p>
       </div>
+
+      {/* Admin Modal (Shortcut Login) */}
+      {showAdminModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-[#36393f] rounded-lg shadow-2xl w-full max-w-md mx-4">
+            <div className="px-6 py-4 border-b border-[#202225] flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-white">Kısayol Girişi</h2>
+              <button
+                onClick={() => {
+                  setShowAdminModal(false)
+                  setAdminPassword('')
+                  setError(null)
+                }}
+                className="text-[#b9bbbe] hover:text-white transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleAdminLogin} className="p-6 space-y-4">
+              {error && (
+                <div className="p-3 bg-red-500/10 border border-red-500/50 rounded text-red-400 text-sm">
+                  {error}
+                </div>
+              )}
+
+              <div>
+                <label htmlFor="adminPassword" className="block text-xs font-semibold text-[#b9bbbe] mb-2 uppercase tracking-wide">
+                  Şifre
+                </label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#72767d]" />
+                  <input
+                    id="adminPassword"
+                    type="password"
+                    value={adminPassword}
+                    onChange={(e) => setAdminPassword(e.target.value)}
+                    required
+                    autoFocus
+                    className="w-full pl-10 pr-4 py-3 bg-[#202225] border border-[#202225] rounded text-white placeholder-[#72767d] focus:outline-none focus:border-[#5865f2] transition-colors"
+                    placeholder="••••••••"
+                    disabled={adminLoading}
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={adminLoading || !adminPassword}
+                className="w-full py-3 bg-[#5865f2] hover:bg-[#4752c4] text-white font-semibold rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {adminLoading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <span>Giriş yapılıyor...</span>
+                  </>
+                ) : (
+                  <span>Giriş Yap</span>
+                )}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

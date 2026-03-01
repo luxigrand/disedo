@@ -9,6 +9,7 @@ import ChannelsSidebar from '@/components/ChannelsSidebar'
 import ChatArea from '@/components/ChatArea'
 import MembersList from '@/components/MembersList'
 import StatusBar from '@/components/StatusBar'
+import ResizablePanel from '@/components/ResizablePanel'
 
 function AppPageContent() {
   const [selectedServer, setSelectedServerState] = useQueryState('server')
@@ -103,19 +104,31 @@ function AppPageContent() {
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#202225]">
-      {/* Server Sidebar */}
-      <ServerSidebar
-        selectedServer={selectedServer}
-        onSelectServer={setSelectedServer}
-      />
-
-      {/* Channels Sidebar */}
-      {selectedServer && (
-        <ChannelsSidebar
-          serverId={selectedServer}
-          selectedChannel={selectedChannel}
-          onSelectChannel={setSelectedChannel}
+      {/* Server Sidebar - Resizable */}
+      <ResizablePanel
+        defaultWidth={64}
+        storageKey="server-sidebar-width"
+        position="right"
+      >
+        <ServerSidebar
+          selectedServer={selectedServer}
+          onSelectServer={setSelectedServer}
         />
+      </ResizablePanel>
+
+      {/* Channels Sidebar - Resizable */}
+      {selectedServer && (
+        <ResizablePanel
+          defaultWidth={240}
+          storageKey="channels-sidebar-width"
+          position="right"
+        >
+          <ChannelsSidebar
+            serverId={selectedServer}
+            selectedChannel={selectedChannel}
+            onSelectChannel={setSelectedChannel}
+          />
+        </ResizablePanel>
       )}
 
       {/* Main Content Area */}
@@ -136,8 +149,16 @@ function AppPageContent() {
         )}
       </div>
 
-      {/* Members List */}
-      {selectedServer && <MembersList serverId={selectedServer} />}
+      {/* Members List - Resizable */}
+      {selectedServer && (
+        <ResizablePanel
+          defaultWidth={240}
+          storageKey="members-sidebar-width"
+          position="left"
+        >
+          <MembersList serverId={selectedServer} />
+        </ResizablePanel>
+      )}
 
       {/* Status Bar */}
       <StatusBar serverId={selectedServer} channelId={selectedChannel} />
